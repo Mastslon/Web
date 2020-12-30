@@ -62,13 +62,13 @@
                             <thead>
                                 <tr>
                                     <th>Name of material</th>
-                                    <th>The amount needed</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            {%for i in range(5)%}
                             <tr>
                                 <td>
-                                    <select size="1" id="row-1-office" name="row-1-office">
+                                    <select size="1" id="row-1-office" name="row-{{i}}-office">
                                         <option value="None" selected="selected">
                                             None
                                         </option>
@@ -87,10 +87,22 @@
                                         <option value="A4">
                                             A4
                                         </option>
+                                        <option value="Boots">
+                                            Boots
+                                        </option>
+                                        <option value="Glue">
+                                            Glue
+                                        </option>
+                                        <option value="Toys">
+                                            Toys
+                                        </option>
+                                        <option value="Clothes">
+                                            Clothes
+                                        </option>
                                     </select></td>
                                 <td>
-                                <input type="text" id="row-1-age" name="row-1-age"></td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 

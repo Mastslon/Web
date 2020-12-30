@@ -19,14 +19,13 @@
                         <div class="mb-4">
                             <h2 class="pt-2 tm-color-primary tm-post-title">
                                 {% if post%}
-                                {{post[1]}}
+                                {{post[0][1]}}
                                 {% endif %}
                             </h2>
-                            <p class="tm-mb-40">June 16, 2020 posted by Admin Nat</p>
                             <p>
                                 
                                 {% if post%}
-                                {{post[2]}}
+                                {{post[0][2]}}
                                 {% endif %}
                             </p>
                         </div>
@@ -38,10 +37,11 @@
                     <div class="row tm-row tm-mb-45">
                         <div class="col-12">
                             <hr class="tm-hr-primary tm-mb-55">
-                            <h4>{{post[7]}} , {{post[8]}}</h4>
+                            <h4>{{post[0][7]}} , {{post[0][8]}}</h4>
+                            <p class="tm-mb-40">Number of Students: {{post[0][5]}}</p>
                             <div class="gmap_canvas"> <!-- Google Map -->
                                 <iframe width="100%" height="477" id="gmap_canvas"
-                                    src="{{post[6]}}"
+                                    src="{{post[0][6]}}"
                                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                             </div>
                         </div>                
@@ -54,33 +54,12 @@
                         <hr class="mb-3 tm-hr-primary">
                         <h2 class="mb-4 tm-post-title tm-color-primary">Material List</h2>
                         <ul class="tm-mb-75 pl-5 tm-category-list">
-                            <li><a href="#" class="tm-color-primary">Visual Designs</a></li>
-                            <li><a href="#" class="tm-color-primary">Travel Events</a></li>
-                            <li><a href="#" class="tm-color-primary">Web Development</a></li>
-                            <li><a href="#" class="tm-color-primary">Video and Audio</a></li>
-                            <li><a href="#" class="tm-color-primary">Etiam auctor ac arcu</a></li>
-                            <li><a href="#" class="tm-color-primary">Sed im justo diam</a></li>
+                            
+                            {% for need in post[1] %}
+                            <li><a href="#" class="tm-color-primary">{{need[0]}}</a></li>
+                            {% endfor %}
                         </ul>
-                        <hr class="mb-3 tm-hr-primary">
-                        <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-                        <a href="#" class="d-block tm-mb-40">
-                            <figure>
-                                <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
-                                <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit</figcaption>
-                            </figure>
-                        </a>
-                        <a href="#" class="d-block tm-mb-40">
-                            <figure>
-                                <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
-                                <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper ullamcorper</figcaption>
-                            </figure>
-                        </a>
-                        <a href="#" class="d-block tm-mb-40">
-                            <figure>
-                                <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
-                                <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
-                            </figure>
-                        </a>
+                        <hr class="mb-3 tm-hr-primary"> 
                     </div>                    
                 </aside>
             </div>

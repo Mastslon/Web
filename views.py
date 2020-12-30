@@ -42,7 +42,14 @@ def create_post_page():
         form_content = request.form["content"]
         form_school = request.form["school"]
         form_students = int(request.form["students"])
-        key = database.new_post(form_title, form_content, form_school, form_students)
+        needs = []
+        for i in range(5):
+            selected = request.form["row-"+str(i)+"-office"]
+            if selected not in needs:
+                if selected != "None":
+                    needs.append(selected)
+        print(needs)
+        key = database.new_post(form_title, form_content, form_school, form_students, needs)
         return redirect(url_for("post_page", post_key = key))
 def class_test_page():
     if request.method == "GET":
