@@ -35,6 +35,11 @@
                             <input class="form-control mr-0 ml-auto" name="title" id="name" type="text" required>                            
                         </div>
                     </div>
+
+                    {% if error%}
+                    <h4 style="color: red;">Invalid School Name</h4>
+                    {% endif %}
+
                     <div class="form-group row mb-4">
                         <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">School</label>
                         <div class="col-sm-9">
