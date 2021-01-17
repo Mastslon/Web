@@ -12,8 +12,8 @@ def load_user():
     return "test"
 
 
+app = Flask(__name__)   
 if __name__ == "__main__":
-    app = Flask(__name__)
     app.secret_key = os.urandom(24)
     app.config["MYSQL_USER"] = 'b0dd62d51c1994'
     app.config["MYSQL_PASSWORD"] = '589ca3ad'
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     app.add_url_rule("/new_password", view_func=views.change_password, methods=["GET","POST"])
     app.add_url_rule("/Update_post/<int:post_key>", view_func=views.update_post, methods=["GET","POST"])
     app.add_url_rule("/delete_post/<int:post_key>", view_func=views.post_delete_page, methods=["GET","POST"])
-    
+
     lm.init_app(app)
     db = MySQL(app)
     app.config["db"] = db
