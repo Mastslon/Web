@@ -29,7 +29,7 @@ def create_app():
 
     app.add_url_rule("/", view_func=views.home_page)
     app.add_url_rule("/posts/<int:post_key>", view_func=views.post_page)
-    app.add_url_rule("/", view_func=views.home_page)
+    app.add_url_rule("/", view_func=index)
     app.add_url_rule("/post", view_func=views.post_page)
     app.add_url_rule("/new_post", view_func=views.create_post_page, methods=["GET","POST"])
     app.add_url_rule("/register", view_func=views.register_page, methods=["GET","POST"])
