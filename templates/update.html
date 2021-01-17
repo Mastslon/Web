@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <main class="tm-main">
+            <!-- Search form -->
+            <div class="row tm-row">
+                <div class="col-12">
+                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
+                        <button class="tm-search-button" type="submit">
+                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                        </button>                                
+                    </form>
+                </div>                
+            </div>
+            <div class="row tm-row">
+                <form method="POST" action="" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+                <div class="col-lg-8 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h2 class="pt-2 tm-color-primary tm-post-title">
+                                {% if post%}
+                                {{post[0][1]}}
+                                {% endif %}
+                            </h2>
+                            <div class="form-group row mb-4">
+                                <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">New Title</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control mr-0 ml-auto" name="title" id="name" type="text" required>                            
+                                </div>
+                            </div>
+                            <p>  
+                                
+                                {% if post%}
+                                {{post[0][2]}}
+                                {% endif %}
+                            </p>
+                            
+                            <div class="form-group row mb-5">
+                                <label for="message" class="col-sm-3 col-form-label text-right tm-color-primary">New Message</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control mr-0 ml-auto" name="content" id="message" rows="8" required></textarea>                                
+                                </div>
+                            </div>
+                     
+                        </div>
+                        <div class="form-group row text-right">
+                            <div class="col-12">
+                                <button class="tm-btn tm-btn-primary tm-btn-small">Submit Changes</button>                        
+                            </div>                            
+                        </div> 
+                </form>
+                        
+                        <!-- Comments -->
+                        
+                    </div>
+                    <h4 class="pt-2 tm-color-primary tm-post-title">Location:</h4>           
+                    <div class="row tm-row tm-mb-45">
+                        <div class="col-12">
+                            <hr class="tm-hr-primary tm-mb-55">
+                            <h4>{{post[0][7]}} , {{post[0][8]}}</h4>
+                            <p class="tm-mb-40">Number of Students: {{post[0][5]}}</p>
+                            <div class="gmap_canvas"> <!-- Google Map -->
+                                <iframe width="100%" height="477" id="gmap_canvas"
+                                    src="{{post[0][6]}}"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            </div>
+                        </div>                
+                    </div>
+
+                </div>
+                
+                <aside class="col-lg-4 tm-aside-col">
+                    <div class="tm-post-sidebar">
+                        <hr class="mb-3 tm-hr-primary">
+                        <h2 class="mb-4 tm-post-title tm-color-primary">Material List</h2>
+                        <ul class="tm-mb-75 pl-5 tm-category-list">
+                            
+                            {% for need in post[1] %}
+                            <li><a href="#" class="tm-color-primary">{{need[0]}}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <hr class="mb-3 tm-hr-primary"> 
+                    </div>                    
+                </aside>
+            </div>
+        </main>
+    </div>
+
+ {% endblock %}
