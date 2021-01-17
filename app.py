@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 import views
 from database import Database
 from flask_login import LoginManager, login_user
-
+from flask import current_app, render_template
 from flask import Flask, session, redirect, url_for, escape, request
 import os
 lm = LoginManager()
@@ -13,7 +13,11 @@ def load_user():
 
 
 app = Flask(__name__)
-    
+
+@app.route('/')
+def index():
+    return render_template("home.html")
+
 def create_app():
     app.secret_key = os.urandom(24)
 
