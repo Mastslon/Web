@@ -15,6 +15,12 @@ def load_user():
 
 app = Flask(__name__)
     
+
+
+@app.error_handler(404)
+def handler(e):
+    return "Test"
+        
 def create_app():
     app.secret_key = os.urandom(24)
 
