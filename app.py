@@ -11,9 +11,11 @@ lm = LoginManager()
 def load_user():
     return "test"
 
+
+
+app = Flask(__name__)
     
 def create_app():
-    app = Flask(__name__)
     app.secret_key = os.urandom(24)
 
     app.config["MYSQL_USER"] = 'b0dd62d51c1994'
