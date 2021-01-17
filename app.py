@@ -32,6 +32,10 @@ def create_app():
     app.config["MYSQL_HOST"] = 'eu-cdbr-west-03.cleardb.net'
     app.config["MYSQL_DB"] = 'heroku_1fed0ad0dd81591'
     app.config.from_object("settings")
+    
+    lm.init_app(app)
+    db = MySQL(app)
+    app.config["db"] = db
     app.add_url_rule("/", view_func=views.home_page)
     app.add_url_rule("/posts/<int:post_key>", view_func=views.post_page)
     app.add_url_rule("/post", view_func=views.post_page)
@@ -52,8 +56,5 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    lm.init_app(app)
-    db = MySQL(app)
-    app.config["db"] = db
     database = Database()
     app.run()
