@@ -6,6 +6,7 @@ from flask_login import LoginManager, login_user
 from flask import current_app, render_template
 from flask import Flask, session, redirect, url_for, escape, request
 import os
+from flask_cors import CORS
 lm = LoginManager()
 @lm.user_loader
 def load_user():
@@ -13,6 +14,16 @@ def load_user():
 
 
 app = Flask(__name__)
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    response.headers.add('Access-Control-Allow-Headers',
+                        'Content-Type,Authorization')
+    return response
+
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/": {"origins": ""}})
 
 def create_app():
     app.secret_key = os.urandom(24)
