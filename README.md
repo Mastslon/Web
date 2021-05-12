@@ -1,1 +1,1 @@
-# BLG317E Flask Web Project
+Flask Web Project
